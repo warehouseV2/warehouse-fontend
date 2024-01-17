@@ -9,9 +9,13 @@
 .light {
   --background: 246, 246, 246;
   --textColor: 0, 0, 0;
+  --color: 255, 255, 255;
+  --bgInput: 249, 250, 251;
 }
 
 .dark {
   --background: 24, 26, 30;
   --textColor: 255, 255, 255;
+  --color: 31, 41, 55;
+  --bgInput: 55, 65, 81;
 }

@@ -8,10 +8,18 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        mobile: "440px",
+        tablet: "640px",
+        laptop: "1024px",
+        desktop: "1280px",
+      },
       colors: {
         themeColor: "rgba(var(--themeColor))",
         background: "rgba(var(--background))",
         textColor: "rgba(var(--textColor))",
+        color: "rgba(var(--color))",
+        bgInput: "rgba(var(--bgInput))",
       },
     },
   },
