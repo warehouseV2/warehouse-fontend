@@ -5,7 +5,13 @@ export interface CustomLabelProps extends React.LabelHTMLAttributes<HTMLLabelEle
 
 const CustomLabel = React.forwardRef<HTMLLabelElement, CustomLabelProps>(
   ({ className, ...props }, ref) => {
-    return <label className={cn("tw-text-textColor", className)} {...props} ref={ref}></label>;
+    return (
+      <label
+        className={cn("tw-text-textColor tw-font-normal", className)}
+        {...props}
+        ref={ref}
+      ></label>
+    );
   }
 );
 

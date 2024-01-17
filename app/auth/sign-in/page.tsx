@@ -2,14 +2,15 @@
 import CustomButton from "@/app/components/ui/custom-button";
 import CustomInput from "@/app/components/ui/custom-input";
 import CustomLabel from "@/app/components/ui/custom-label";
-
 import React, { useState } from "react";
 import Link from "next/link";
 import { IconBxlFacebook, IconGoogle, IconGithub } from "@/public/icon/sign-in";
+import { IconEye, IconEyeInvisible } from "@/public/icon/password-input";
 
 export default function page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,26 +19,44 @@ export default function page() {
 
   return (
     <div className="tw-text-center tw-w-full tw-flex tw-flex-col tw-gap-4">
-      <div className="tw-h-20 tw-border tw-flex tw-justify-center tw-items-center">LOGO</div>
+      <div className="tw-h-40 tw-border tw-flex tw-justify-center tw-items-center">LOGO</div>
       <form onSubmit={handleSubmit} className="tw-flex tw-flex-col tw-gap-4">
         <div className="tw-flex tw-flex-col tw-gap-1">
           <CustomLabel className="tw-text-left">Email</CustomLabel>
           <CustomInput
             type="text"
             name="email"
-            placeholder="example@outlook.com"
+            placeholder="Enter you Email..."
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="tw-flex tw-flex-col tw-gap-1">
           <CustomLabel className="tw-text-left">Password</CustomLabel>
-          <CustomInput
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="tw-relative">
+            <CustomInput
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Enter you Password..."
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="tw-w-full"
+            />
+            <button
+              type="button"
+              aria-label={showPassword ? "Password Visible" : "Password Invisible."}
+              className="tw-text-gray-500 "
+              onClick={() => {
+                setShowPassword((prev) => !prev);
+              }}
+            >
+              {showPassword ? (
+                <IconEye className=" tw-select-none tw-cursor-pointer  tw-absolute tw-top-3 tw-right-3" />
+              ) : (
+                <IconEyeInvisible className=" tw-select-none tw-cursor-pointer  tw-absolute tw-top-3 tw-right-3" />
+              )}
+            </button>
+          </div>
         </div>
         <div className="tw-flex tw-justify-between tw-items-center">
           <div className="tw-items-center tw-flex tw-justify-between tw-gap-2">
@@ -78,7 +97,7 @@ export default function page() {
       </CustomButton>
       <p className="tw-mt-4 tw-text-sm tw-text-center tw-text-textColor">
         Don't have an account?{" "}
-        <Link href="auth/sign-up" className="tw-font-medium tw-text-blue-600 hover:tw-underline">
+        <Link href="/auth/sign-up" className="tw-font-medium tw-text-blue-600 hover:tw-underline">
           Sign up
         </Link>
       </p>
